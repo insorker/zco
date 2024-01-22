@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "../zco.h"
+#include "../zco_queue.h"
 
 int cid[10];
 
