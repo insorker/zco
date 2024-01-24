@@ -1,17 +1,12 @@
-all: test_zco test_zco_queue test_zco_file
-
 CC = gcc
-CFLAGS = -fsanitize=address -Wall -Werror -g
-SRC = zco.c mutex.c zco_queue.c
+CFLAGS = -Wall -Werror -g # -fsanitize=address
+SRC = zco.c mutex.c zco_queue.c zco_aio.c
+TESTS = test_zco test_zco_queue test_zco_file test_zco_aio
 
-test_zco: test/test_zco.c
-	$(CC) $(CFLAGS) -o $@ $< $(SRC)
+all: $(TESTS)
 
-test_zco_queue: test/test_zco_queue.c
-	$(CC) $(CFLAGS) -o $@ $< $(SRC)
-
-test_zco_file: test/test_zco_file.c
+%: test/%.c
 	$(CC) $(CFLAGS) -o $@ $< $(SRC)
 
 clean:
-	rm test_zco test_zco_queue -rf
+	rm $(TESTS) -rf
