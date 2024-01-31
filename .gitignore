@@ -1,5 +1,3 @@
 *.out
-test_zco
-test_zco_queue
-test_zco_file
-test_zco_aio
+test/lib/*
+!test/lib/static/
